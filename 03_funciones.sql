@@ -17,9 +17,9 @@ CREATE OR REPLACE FUNCTION productos_bajo_stock(cantidad_minima INT)
 RETURNS TABLE(id INT, nombre TEXT, stock INT) AS $$
 BEGIN
     RETURN QUERY
-    SELECT id, nombre, stock
-    FROM productos
-    WHERE stock < cantidad_minima;
+    SELECT p.id, p.nombre, p.stock
+    FROM productos p
+    WHERE p.stock < cantidad_minima;
 END;
 $$ LANGUAGE plpgsql;
 
